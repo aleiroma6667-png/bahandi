@@ -1,0 +1,513 @@
+/* 1. НЕГІЗГІ ПАРАМЕТРЛЕР */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 1. Основная полоса хедера */
+.main-header {
+    background-color: #009846; /* Насыщенный зеленый из твоего макета */
+    height: 80px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Контейнер для центровки контента внутри хедера */
+.header-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* 3. Стили для Логотипа (BAHANDI) */
+.logo {
+    text-decoration: none;
+}
+
+.logo h1 {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 900; /* Максимально жирный для стиля BAHANDI */
+    margin: 0;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    font-family: sans-serif; /* Можно заменить на Arial Black для пущей схожести */
+}
+
+/* 4. Навигация (Бургеры, Новинки и т.д.) */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Расстояние между ссылками */
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+/* 5. Правая часть (Кнопка корзины) */
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-cart-btn {
+    background-color: #FF6B00; /* Яркий оранжевый как на фото */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 12px; /* Округлые углы как в Figma */
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.nav-cart-btn:hover {
+    background-color: #e66000;
+    transform: translateY(-1px);
+}
+
+.cart-badge {
+    margin-left: 4px;
+}
+
+/* 6. Адаптив: чтобы на мобилках ничего не ломалось */
+@media (max-width: 768px) {
+    .main-header {
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-menu {
+        gap: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 28px;
+    }
+}
+
+/* Основной контейнер страницы */
+.page-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Заголовок категории (Бургеры) */
+.page-title {
+    color: #009846; /* Зеленый цвет текста */
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* Сетка (4 колонки) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 карточки в ряд */
+    gap: 20px;
+}
+
+/* Сама карточка товара */
+.product-card {
+    background-color: #F2F2F2; /* Светло-серый фон карточки */
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Место под картинку (серый квадрат) */
+.card-preview {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Квадратная форма */
+    background-color: #D9D9D9; /* Темнее серый для пустой картинки */
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Инфо блок внутри карточки */
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Цена (сверху над названием) */
+.product-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: #333;
+    margin: 0;
+}
+
+/* Название товара */
+.product-name {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 10px 0;
+}
+
+/* Кнопка "В корзину" */
+.add-btn {
+    background-color: #009846; /* Фирменный зеленый */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.add-btn:hover {
+    background-color: #007d39;
+}
+
+/* Адаптивность: 2 карточки на планшетах, 1 на телефонах */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Основной фон футера */
+.main-footer {
+    background-color: #262626; /* Темный цвет из макета */
+    padding: 60px 0;
+    color: #ffffff;
+    width: 100%;
+    margin-top: auto; /* Прижимает футер к низу, если контента мало */
+}
+
+/* Контейнер для выравнивания */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    gap: 200px; /* Большой отступ между колонками как на фото */
+    padding: 0 20px;
+}
+
+/* Стили логотипа в футере */
+.footer-logo {
+    font-size: 42px;
+    font-weight: 900;
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: #a6a6a6; /* Чуть более светлый серый для текста */
+    margin: 0;
+}
+
+/* Стили колонки "Компания" */
+.footer-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    text-transform: none;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 12px;
+}
+
+.footer-list a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.footer-list a:hover {
+    color: #009846; /* Зеленый при наведении */
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .footer-container {
+        justify-content: center;
+    }
+}
+
+/* 1. Убираем внешние отступы и центрирование «окном» */
+.detail-page-container {
+    background-color: #ffffff; /* Делаем фон всей страницы белым */
+    min-height: 100vh;
+    padding: 0; /* Убираем паддинги, чтобы прилипало к краям */
+    display: block; /* Отменяем flex-центрирование */
+}
+
+/* 2. Растягиваем карточку на весь экран */
+.detail-content-card {
+    display: flex;
+    width: 100%;
+    min-height: 100vh; /* Растягиваем во всю высоту экрана */
+    max-width: none;   /* Убираем ограничение по ширине */
+    border-radius: 0;  /* Убираем скругления углов */
+    box-shadow: none;  /* Убираем тени */
+    border: none;      /* Убираем любые рамки */
+}
+
+/* 3. Левая часть (Фото) на пол-экрана */
+.detail-media-section {
+    flex: 1;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.main-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Фото заполняет свою половину без искажений */
+}
+
+/* 4. Правая часть (Текст и инфо) */
+.detail-info-section {
+    flex: 1;
+    padding: 80px; /* Большие отступы для чистого вида */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+}
+
+/* 5. Секция отзывов теперь идет ниже или внутри правой части */
+.product-comments-area {
+    margin-top: 60px;
+    max-width: 800px; /* Чтобы текст отзывов не растягивался слишком широко */
+}
+
+/* Убираем кнопку-крестик, так как это больше не модалка */
+.close-detail-btn {
+    display: none;
+}
+
+/* Стили для текста из твоего макета */
+.product-main-title {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.product-main-price {
+    font-size: 34px;
+    font-weight: 700;
+    color: #000;
+}
+
+.primary-action-btn {
+    background-color: #FF6B00;
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px; /* Кнопка не на весь экран, а аккуратная */
+}
+
+/* Ақпарат бағаны (оң жақ) */
+.detail-info-section {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Батырма осыған байланысты орналасуы үшін керек */
+    background: #ffffff;
+}
+
+/* Жаңа "Артқа қайту" (Жабу) батырмасы */
+.close-detail-btn {
+    position: absolute;
+    top: 30px;    /* Жоғарыдан қашықтық */
+    right: 30px;  /* Оң жақтан қашықтық */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f1f1f1; /* Жеңіл сұр түс */
+    border: none;
+    font-size: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.close-detail-btn:hover {
+    background-color: #e0e0e0;
+    transform: rotate(90deg); /* Меңзерді апарғанда әдемі айналады */
+}
+
+/* Мәтіндердің батырмамен соқтығыспауы үшін */
+.product-main-title {
+    padding-right: 50px; /* Батырмаға орын қалдыру */
+    font-size: 42px;
+    font-weight: 800;
+}
+
+/* Ақпарат бағаны (оң жақ) */
+.detail-info-section {
+    flex: 1.1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #ffffff;
+}
+
+/* "Артқа қайту" мәтіндік сілтемесі */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #999; /* Басында сәл тускен түс */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin-bottom: 25px; /* Тауар атынан қашықтық */
+    user-select: none;
+    align-self: flex-start; /* Өзінің енін ғана алу үшін */
+}
+
+.back-link:hover {
+    color: #FF6B00; /* Меңзерді апарғанда оранжевый түс */
+}
+
+/* Тауардың аты */
+.product-main-title {
+    padding-right: 0; /* Крестик болмағандықтан, оң жақтағы паддинг керек емес */
+    font-size: 42px;
+    font-weight: 800;
+    margin: 0 0 15px 0; /* Үстінен маржин керек емес, оны back-link маржині береді */
+}
+
+/* Ряд товара в корзине */
+.cart-item-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-img {
+    width: 100px; 
+    height: 80px; 
+    object-fit: cover; 
+    border-radius: 12px;
+}
+
+/* Секция итога */
+.cart-total-section {
+    margin-top: 40px;
+    text-align: right;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+}
+
+/* Модальное окно заказа */
+.order-modal {
+    max-width: 450px;
+    padding: 40px;
+}
+
+.order-modal .confirm-btn {
+    background-color: #27AE60;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.order-modal .confirm-btn:hover {
+    background-color: #219150;
+}
