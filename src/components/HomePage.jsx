@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom'; // Убрали useLocation
 
 const HomePage = ({ addToCart }) => {
     const [products, setProducts] = useState([]);
@@ -9,8 +9,9 @@ const HomePage = ({ addToCart }) => {
 
     const navigate = useNavigate();
     const { categoryName } = useParams();
-    const location = useLocation();
-
+    // Строку const location = useLocation(); удалили
+    
+    // ... остальной код без изменений
     useEffect(() => {
         setLoading(true);
         let filter = '';
